@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
 import { createServer, Model } from "miragejs";
 import { NewTransactionModal } from "./components/NewTransactionModal";
+import { TransactionsProvider } from "./hooks/useTransactions";
 
 createServer({
   models: {
@@ -14,35 +15,35 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: 'Freelancer de React',
-          type: 'deposit',
-          category: 'development',
+          title: "Freelancer de React",
+          type: "deposit",
+          category: "development",
           amount: 6000,
-          createdAt: new Date('2021-03-03 15:23:12')
+          createdAt: new Date("2021-03-03 15:23:12"),
         },
         {
           id: 2,
-          title: 'Pizza',
-          type: 'withdraw',
-          category: 'food',
+          title: "Pizza",
+          type: "withdraw",
+          category: "food",
           amount: 60,
-          createdAt: new Date('2021-03-04 15:23:12')
-        }
+          createdAt: new Date("2021-03-04 15:23:12"),
+        },
       ],
-    })
+    });
   },
   routes() {
     this.namespace = "api";
 
     this.get("/transactions", () => {
-      return this.schema.all('transaction');
+      return this.schema.all("transaction");
     });
 
     this.post("/transactions", (schema, request) => {
       const data = JSON.parse(request.requestBody);
 
-      return schema.create('transaction', data);
-    })
+      return schema.create("transaction", data);
+    });
   },
 });
 
@@ -59,7 +60,7 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard />
 
@@ -69,6 +70,6 @@ export function App() {
       />
 
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
