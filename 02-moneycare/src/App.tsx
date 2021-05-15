@@ -15,19 +15,27 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: "Freelancer de React",
+          title: "Web Scraping Freelancer",
           type: "deposit",
-          category: "development",
-          amount: 6000,
+          category: "Desenvolvimento",
+          amount: 3000,
           createdAt: new Date("2021-03-03 15:23:12"),
         },
         {
           id: 2,
           title: "Pizza",
           type: "withdraw",
-          category: "food",
+          category: "Comida",
           amount: 60,
           createdAt: new Date("2021-03-04 15:23:12"),
+        },
+        {
+          id: 3,
+          title: "Cafezinho",
+          type: "withdraw",
+          category: "Combustível",
+          amount: 0.5,
+          createdAt: new Date("2021-03-05 15:23:12"),
         },
       ],
     });
