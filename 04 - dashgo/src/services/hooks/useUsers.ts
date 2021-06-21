@@ -32,7 +32,7 @@ export function useUsers() {
     "users",
     getUsers,
     {
-      staleTime: 1000 * 5,
+      staleTime: 1000 * 60 * 10,
     }
   );
 }
